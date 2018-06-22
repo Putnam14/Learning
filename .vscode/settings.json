@@ -1,0 +1,10 @@
+{
+  "workbench.colorTheme": "Quiet Light",
+  "gitlens.advanced.messages": {
+      "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.historyExplorer.enabled": true,
+  "[javascript]": {},
+  "git.autofetch": true,
+  "editor.tabSize": 2
+}

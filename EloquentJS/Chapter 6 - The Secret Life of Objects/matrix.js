@@ -1,5 +1,9 @@
-class Matrix {
-    constructor (width, height, element = (x, y) => undefined) {
+// It's not worth it to refactor everything to airbnb's style guide.
+// Going forward, I will adheere to airbnb's rules (well, most of them)
+// This should probably be like /** * * */ or something
+
+class Matrix { 
+    constructor(width, height, element = (x, y) => undefined) {
         this.width = width;
         this.height = height;
         this.content = [];
