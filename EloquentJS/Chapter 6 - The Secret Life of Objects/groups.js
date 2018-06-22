@@ -20,6 +20,7 @@ class Group {
     this.collection = [];
   }
 
+  // from the solution: can refactor to this.has(val)
   add(val) {
     if (!this.collection.includes(val)) this.collection.push(val);
   }
