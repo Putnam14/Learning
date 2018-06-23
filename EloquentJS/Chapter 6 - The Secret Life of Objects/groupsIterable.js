@@ -12,9 +12,40 @@
  * It is okay if your iterator behaves strangely when the group is modified during iteration.
  */
 
-// Your code here (and the code from the previous exercise)
+class Group {
+  constructor() {
+    this.collection = [];
+  }
 
-Group.from(['a', 'b', 'c']).forEach(value => console.log(value));
+  add(val) {
+    if (!this.has(val)) this.collection.push(val);
+  }
+
+  delete(val) {
+    this.collection.splice(this.collection.indexOf(val), 1);
+  }
+
+  has(val) {
+    return this.collection.includes(val);
+  }
+
+  [Symbol.iterator]() {
+    let index = -1;
+    const data = this.collection;
+    index += 1;
+    return {
+      next: () => ({ value: data[index], done: !(index in data) }),
+    };
+  }
+
+  static from(arr) {
+    const group = new Group();
+    arr.forEach(val => group.add(val));
+    return group;
+  }
+}
+
+Object.values(Group.from(['a', 'b', 'c']).collection).forEach(value => console.log(value)); // airbnb does NOT like for .. in
 // → a
 // → b
 // → c
