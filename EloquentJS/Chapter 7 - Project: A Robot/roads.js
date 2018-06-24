@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   'Alice\'s House-Bob\'s House',
   'Alice\'s House-Cabin',
   'Alice\'s House-Post Office',
