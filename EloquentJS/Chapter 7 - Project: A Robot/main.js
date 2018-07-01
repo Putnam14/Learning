@@ -3,7 +3,7 @@ const randomPick = require('./randomPick');
 const roadGraph = require('./roadGraph');
 const runRobot = require('./runRobot');
 // const randomBot = require('./robots/randomRobot');
-const routeBot = require('./robots/routeRobot');
+// const routeBot = require('./robots/routeRobot');
 const finderBot = require('./robots/finderBot');
 const myBot = require('./robots/myBot');
 // const findRoute = require('./pathFind');
@@ -41,7 +41,6 @@ function compareBots(robot1, memory1, robot2, memory2, turns) {
   console.log(`Robot number one took ${r1s} turns on average.`);
   console.log(`Robot two took ${r2s} turns on average`);
   console.log(`Fastest was ${perc}% faster.`);
-
 }
 
 compareBots(finderBot, [], myBot, [], 5000);
