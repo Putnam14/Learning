@@ -5,6 +5,7 @@ const runRobot = require('./runRobot');
 // const randomBot = require('./robots/randomRobot');
 const routeBot = require('./robots/routeRobot');
 const finderBot = require('./robots/finderBot');
+const myBot = require('./robots/myBot');
 // const findRoute = require('./pathFind');
 
 VillageState.random = function randomVillageState(parcelCount = 5) {
@@ -24,16 +25,23 @@ VillageState.random = function randomVillageState(parcelCount = 5) {
 // runRobot(VillageState.random(), routeBot, []);
 runRobot(VillageState.random(), finderBot, []);
 
-function compareBots(robot1, memory1, robot2, memory2) {
+function compareBots(robot1, memory1, robot2, memory2, turns) {
   let r1 = 0;
   let r2 = 0;
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < turns; i += 1) {
     const randState = VillageState.random();
     r1 += runRobot(randState, robot1, memory1);
     r2 += runRobot(randState, robot2, memory2);
   }
-  console.log(`Robot number one took ${r1 / 100} turns on average.`);
-  console.log(`Robot two took ${r2 / 100} turns on average`);
+  const r1s = r1 / turns;
+  const r2s = r2 / turns;
+  const best = Math.min(r1s, r2s);
+  const slow = Math.max(r1s, r2s);
+  const perc = Math.floor((1 - best / slow) * 100);
+  console.log(`Robot number one took ${r1s} turns on average.`);
+  console.log(`Robot two took ${r2s} turns on average`);
+  console.log(`Fastest was ${perc}% faster.`);
+
 }
 
-compareBots(routeBot, [], finderBot, []);
+compareBots(finderBot, [], myBot, [], 5000);
