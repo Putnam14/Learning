@@ -15,7 +15,7 @@ const box = {
 };
 /**
  * It is a box with a lock. There is an array in the box, but you can get at it only when the box
- * is unlocked. Directly accessing the private _content property is forbidden.
+ * is unlocked. Directly accessing the private _content (secret) property is forbidden.
  *
  * Write a function called withBoxUnlocked that takes a function value as argument, unlocks the box,
  * runs the function, and then ensures that the box is locked again before returning, regardless of
