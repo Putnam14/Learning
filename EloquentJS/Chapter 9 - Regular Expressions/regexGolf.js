@@ -51,6 +51,6 @@ verify(/\w{7,}/,
   ['no', 'hotten totten tenten']);
 
 // 7. A word without the letter e (or E)
-verify(/^(.+ [^e]+|[^e]+ .+)$/i,
+verify(/^((\w+ )?[^e]+( \w+)?)$/i,
   ['red platypus', 'wobbling nest'],
   ['earth bed', 'learning ape', 'BEET']);
