@@ -25,37 +25,41 @@
 function verify(regexp, yes, no) {
   if (regexp.source === '...') return;
   yes.forEach((str) => {
-    if (!regexp.test(str)) console.log(`Failure to match '${str}'`);
+    if (!regexp.test(str)) {
+      console.log(`Failure to match '${str}'`);
+    } else {
+      console.log(`Match for'${str}'`);
+    }
   });
   no.forEach((str) => {
     if (regexp.test(str)) console.log(`Unexpected match for '${str}'`);
   });
 }
 
-verify(/.../,
+verify(/ca(r|t)/,
   ['my car', 'bad cats'],
   ['camper', 'high art']);
 
-verify(/.../,
+verify(/pr?op/,
   ['pop culture', 'mad props'],
   ['plop', 'prrrop']);
 
-verify(/.../,
+verify(/ferr(et|y|ari)/,
   ['ferret', 'ferry', 'ferrari'],
   ['ferrum', 'transfer A']);
 
-verify(/.../,
+verify(/ious\b/,
   ['how delicious', 'spacious room'],
   ['ruinous', 'consciousness']);
 
-verify(/.../,
+verify(/\s[.,:;]/,
   ['bad punctuation .'],
   ['escape the period']);
 
-verify(/.../,
+verify(/\w{7,}/,
   ['hottentottententen'],
   ['no', 'hotten totten tenten']);
 
-verify(/.../,
+verify(/^(.+ [^e]+|[^e]+ .+)$/i,
   ['red platypus', 'wobbling nest'],
   ['earth bed', 'learning ape', 'BEET']);
